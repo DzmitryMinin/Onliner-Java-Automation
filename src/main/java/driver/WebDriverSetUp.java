@@ -7,7 +7,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import propertyUtils.PropertyReader;
 
 import java.time.Duration;
 
@@ -19,7 +18,8 @@ public class WebDriverSetUp {
             switch (type) {
                 case CHROME:
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments(PropertyReader.getProperties().getProperty("browser.option").split(";"));
+                    //options.addArguments(PropertyReader.getProperties().getProperty("browser.option").split(";"));
+                    options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.3");
                     webDriver = new ChromeDriver(options);
                     break;
                 case FIREFOX:
@@ -32,6 +32,7 @@ public class WebDriverSetUp {
                     break;
             }
             webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            webDriver.manage().window().maximize();
         }
     }
 

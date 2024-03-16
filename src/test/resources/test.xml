@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="login">
+    <test name="Login Tests" enabled="false">
+        <classes>
+            <class name="LoginTests"/>
+        </classes>
+    </test>
+    <test name="catalog tests" enabled="false">
+        <classes>
+            <class name="CatalogTests"></class>
+        </classes>
+    </test>
+    <test name="registration tests" enabled="false">
+        <classes>
+            <class name="RegistrationTests"></class>
+        </classes>
+    </test>
+    <test name="profile test">
+        <classes>
+            <class name="ProfilePageTests"></class>
+        </classes>
+    </test>
+</suite>
+
