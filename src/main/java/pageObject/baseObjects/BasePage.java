@@ -1,18 +1,13 @@
 package pageObject.baseObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 import static driver.WebDriverSetUp.getDriver;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static propertyUtils.PropertyReader.getProperties;
 
 public abstract class BasePage {
@@ -36,12 +31,8 @@ public abstract class BasePage {
 
     protected void moveOverElementAndClick(WebElement webElement) {
         actions.moveToElement(webElement).click().perform();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //webElement.click();
+        sleep(500);
+        webElement.click();
     }
 
     protected void submit(By by) {
@@ -49,8 +40,13 @@ public abstract class BasePage {
     }
 
     protected void enterValue(By by, CharSequence... charSequences) {
-        waitUntilElementToBeClickable(by);
+        clear(by);
         driver.findElement(by).sendKeys(charSequences);
+    }
+
+    protected void clear(By by) {
+        driver.findElement(by).sendKeys(Keys.CONTROL + "a");
+        driver.findElement(by).sendKeys(Keys.DELETE);
     }
 
     protected void clickElement(By by) {
@@ -71,9 +67,17 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
     }
 
+    protected void waitUntilInvisibilityOfElementLocated(By by) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
     protected void switchToFrame(By by) {
         waitUntilVisibilityOf(by);
         driver.switchTo().frame(driver.findElement(by));
+    }
+
+    protected void switchToDefaultContent() {
+        driver.switchTo().defaultContent();
     }
 
     protected void clickElement(WebElement webElement) {
@@ -89,25 +93,13 @@ public abstract class BasePage {
         driver.navigate().back();
     }
 
-    protected void refreshPage() {
-        driver.navigate().refresh();
-    }
-
     protected void switchToTab(String tabIndex) {
         driver.switchTo().window(tabIndex);
     }
 
-    protected void sleep() {
+    protected void sleep(Integer ms) {
         try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void sleep(Integer millis) {
-        try {
-            Thread.sleep(millis);
+            Thread.sleep(ms);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -122,4 +114,8 @@ public abstract class BasePage {
             }
         }
     }
+    protected void scrollTo(By by) {
+        actions.scrollToElement(driver.findElement(by)).scrollByAmount(0, 50).perform();
+    }
+
 }

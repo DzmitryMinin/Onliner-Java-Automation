@@ -23,11 +23,11 @@ public class LoginTests extends BaseTest {
     @Test(priority = 2, description = "Successful login")
     public void successfulLoginTest() {
         loginPage
-                .enterLogin("otecdex@gmail.com")
-                .enterPassword("Gerald123!")
+                .enterLogin("gannon.tanveer@marsoak.com")
+                .enterPassword("Test123!")
                 .clickEnterBtn()
                 .switchToFrame()
                 .checkCaptcha()
-                .switchToDefaultContent();
+                .switchToContent();
     }
 }

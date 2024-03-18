@@ -1,4 +1,4 @@
-package pageObject.onliner;
+package pageObject.onliner.CatalogPages;
 
 import org.openqa.selenium.By;
 import pageObject.baseObjects.BasePage;
@@ -33,7 +33,7 @@ public class CatalogPage extends BasePage {
         return this;
     }
 
-    public CatalogPage selectProduct(Integer index) {
+    public CatalogPage selectProductFromSearchList(Integer index) {
         clickElementFromList(productsList, index);
         return this;
     }

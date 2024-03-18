@@ -48,8 +48,8 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage switchToDefaultContent() {
-        driver.switchTo().defaultContent();
+    public LoginPage switchToContent() {
+        switchToDefaultContent();
         return this;
     }
 
@@ -69,20 +69,6 @@ public class LoginPage extends BasePage {
 
     public LoginPage verifyFooter() {
         Assert.assertEquals(driver.findElement(footer).getText(), "© 2001–2024 Onlíner", "Incorrect footer text");
-        return this;
-    }
-
-    public LoginPage sleep1(Integer millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return this;
-    }
-
-    public LoginPage moveCursorToCaptcha() {
-        moveOverElementAndClick(driver.findElement(captchaCheckbox));
         return this;
     }
 }

@@ -2,7 +2,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObject.baseObjects.BaseTest;
 import pageObject.onliner.CartPage;
-import pageObject.onliner.CatalogPage;
+import pageObject.onliner.CatalogPages.CatalogPage;
 
 public class CatalogTests extends BaseTest {
     private CatalogPage catalogPage;
@@ -20,7 +20,7 @@ public class CatalogTests extends BaseTest {
         catalogPage
                 .searchForProduct("Iphone")
                 .switchToFrame()
-                .selectProduct(1)
+                .selectProductFromSearchList(1)
                 .addProductToCart()
                 .openCart();
     }
@@ -30,7 +30,7 @@ public class CatalogTests extends BaseTest {
         catalogPage
                 .searchForProduct("Asus")
                 .switchToFrame()
-                .selectProduct(2)
+                .selectProductFromSearchList(2)
                 .addProductToCart()
                 .openCart();
         cartPage

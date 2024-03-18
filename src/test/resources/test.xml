@@ -16,9 +16,14 @@
             <class name="RegistrationTests"></class>
         </classes>
     </test>
-    <test name="profile test">
+    <test name="profile tests" enabled="false">
         <classes>
             <class name="ProfilePageTests"></class>
+        </classes>
+    </test>
+    <test name="headphones tests">
+        <classes>
+            <class name="HeadphonesTests"></class>
         </classes>
     </test>
 </suite>

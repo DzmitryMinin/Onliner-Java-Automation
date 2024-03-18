@@ -19,7 +19,6 @@ public class WebDriverSetUp {
                 case CHROME:
                     ChromeOptions options = new ChromeOptions();
                     //options.addArguments(PropertyReader.getProperties().getProperty("browser.option").split(";"));
-                    options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.3");
                     webDriver = new ChromeDriver(options);
                     break;
                 case FIREFOX:

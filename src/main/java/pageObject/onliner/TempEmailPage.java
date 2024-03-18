@@ -35,7 +35,6 @@ public class TempEmailPage extends BasePage {
 
     public String getTextOfSelectedValue() {
         Select select = new Select(getWebElement(this.select));
-        //select.selectByValue("blondmail.com"); - вернуть в случае, если будут косяки с selectByIndex
         select.selectByIndex(random.nextInt(20));
         return select.getFirstSelectedOption().getText();
     }
@@ -55,7 +54,7 @@ public class TempEmailPage extends BasePage {
 
     public TempEmailPage confirmNewAccount() {
         switchToTab(firstTabHandle);
-        sleep();
+        sleep(5000);
         clickElement(emailMessage);
         clickElement(submit);
         return this;
