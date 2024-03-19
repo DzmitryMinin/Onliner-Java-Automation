@@ -8,9 +8,10 @@ import static propertyUtils.PropertyReader.getProperties;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
+import testngUtils.InvokedListener;
 import testngUtils.Listener;
 
-@Listeners(Listener.class)
+@Listeners({Listener.class, InvokedListener.class})
 public class BaseTest {
     @BeforeTest
     protected void setUp() {
@@ -20,8 +21,8 @@ public class BaseTest {
         );
     }
 
-    /*@AfterTest(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     protected void tearDown() {
         quitDriver();
-    }*/
+    }
 }

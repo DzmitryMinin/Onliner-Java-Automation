@@ -21,7 +21,7 @@ public class ProfilePageTests extends BaseTest {
                 .switchToContent();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = false, description = "change user's phone number")
     public void test() {
         profilePage = new ProfilePage();
         profilePage

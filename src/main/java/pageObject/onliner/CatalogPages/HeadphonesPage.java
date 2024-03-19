@@ -16,6 +16,8 @@ public class HeadphonesPage extends BasePage {
     private final By wiredHeadphones = By.xpath("(//input[@type='checkbox' and @name='wireless']//following-sibling::span)[2]");
     private final By productList = By.xpath("//a[@class='catalog-form__link catalog-form__link_primary-additional catalog-form__link_base-additional catalog-form__link_font-weight_semibold catalog-form__link_nodecor']");
     private final By loader = By.cssSelector(".catalog-interaction__state_animated");
+    private final By favouriteBtn = By.xpath("((//div[@class='catalog-form__offers-flex'])[1]/div//label)[3]");
+    private final By popupWindow = By.xpath("(//div[contains(text(), 'Добавить в избранное')])[1]");
 
     public HeadphonesPage navigateTo() {
         open("https://catalog.onliner.by/headphones");
@@ -45,12 +47,17 @@ public class HeadphonesPage extends BasePage {
     }
 
     public List<WebElement> getProductList() {
-        List<WebElement> allProducts = driver.findElements(productList);
-        return allProducts;
+        return getListOfWebElements(productList);
     }
 
-    public HeadphonesPage checkLoader() {
+    public HeadphonesPage checkIfPageLoaded() {
         waitUntilInvisibilityOfElementLocated(loader);
+        return this;
+    }
+
+    public HeadphonesPage verifyPopupWindow() {
+        moveOverElement(getWebElement(favouriteBtn));
+        waitUntilVisibilityOf(popupWindow);
         return this;
     }
 }

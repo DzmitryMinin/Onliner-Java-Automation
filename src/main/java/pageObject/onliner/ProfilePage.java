@@ -17,7 +17,7 @@ public class ProfilePage extends BasePage {
     }
 
     public ProfilePage clickChangePhoneNumber() {
-        moveOverElementAndClick(driver.findElement(changePhoneBtn));
+        moveOverElementAndClick(getWebElement(changePhoneBtn));
         return this;
     }
 }

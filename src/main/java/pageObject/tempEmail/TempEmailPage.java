@@ -1,7 +1,6 @@
-package pageObject.onliner;
+package pageObject.tempEmail;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pageObject.baseObjects.BasePage;
 

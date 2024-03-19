@@ -1,7 +1,5 @@
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObject.baseObjects.BaseTest;
 import pageObject.onliner.CatalogPages.HeadphonesPage;
 
@@ -17,12 +15,17 @@ public class HeadphonesTests extends BaseTest {
                 .selectWiredHeadphones();
     }
 
-    @Test(dataProvider = "cable length")
+    @Test(priority = 1, description = "Verify popup window")
+    public void checkPopupWindow() {
+        headphonesPage.verifyPopupWindow();
+    }
+
+    @Test(priority = 2, dataProvider = "cable length", description = "Boundary values analysis for cable length")
     public void cableLengthTest(String lengthFrom, String lengthUpTo, Boolean status) {
         headphonesPage
                 .enterLengthFrom(lengthFrom)
                 .enterLengthUpTo(lengthUpTo)
-                .checkLoader();
+                .checkIfPageLoaded();
         if (status) {
             Assert.assertTrue(headphonesPage.getProductList().size() > 0);
         } else Assert.assertTrue(headphonesPage.getProductList().size() == 0);

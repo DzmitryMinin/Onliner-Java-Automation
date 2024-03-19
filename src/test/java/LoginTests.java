@@ -12,7 +12,7 @@ public class LoginTests extends BaseTest {
         loginPage.navigateTo("https://profile.onliner.by/login");
     }
 
-    @Test(priority = 1, description = "Verify links")
+    @Test(priority = 1, description = "Verify links on login page")
     public void verifyLinks() {
         loginPage
                 .verifyRegistrationLink()
