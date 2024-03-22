@@ -12,7 +12,7 @@ public class CatalogTests extends BaseTest {
     public void precondition() {
         catalogPage = new CatalogPage();
         cartPage = new CartPage();
-        catalogPage.navigateTo("https://catalog.onliner.by/");
+        catalogPage.navigateToCatalog();
     }
 
     @Test(priority = 1, description = "Add a product to cart")
@@ -35,6 +35,6 @@ public class CatalogTests extends BaseTest {
                 .openCart();
         cartPage
                 .verifyCartTitle()
-                .removeItemFromCart();
+                .removeItemsFromCart();
     }
 }

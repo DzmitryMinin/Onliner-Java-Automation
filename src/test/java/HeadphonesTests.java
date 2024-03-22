@@ -31,7 +31,7 @@ public class HeadphonesTests extends BaseTest {
         } else Assert.assertTrue(headphonesPage.getProductList().size() == 0);
     }
 
-    @DataProvider(name="cable length")
+    @DataProvider(name = "cable length")
     public Object[][] getData() {
         return new Object[][]{
                 {"0", "0.3", true},

@@ -36,7 +36,7 @@ public abstract class BasePage {
 
     protected void moveOverElementAndClick(WebElement webElement) {
         log.info("Move cursor over the element :: " + webElement + " and click on it");
-        actions.moveToElement(webElement).click().perform();
+        actions.moveToElement(webElement).perform();
         sleep(500);
         webElement.click();
     }
@@ -146,4 +146,7 @@ public abstract class BasePage {
         actions.scrollToElement(driver.findElement(by)).scrollByAmount(0, 50).perform();
     }
 
+    protected void refreshPage() {
+        driver.navigate().refresh();
+    }
 }

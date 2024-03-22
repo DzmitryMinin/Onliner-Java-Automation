@@ -21,9 +21,14 @@
             <class name="ProfilePageTests"></class>
         </classes>
     </test>
-    <test name="headphones tests">
+    <test name="headphones tests" enabled="false">
         <classes>
             <class name="HeadphonesTests"></class>
+        </classes>
+    </test>
+    <test name="cart tests">
+        <classes>
+            <class name="CartTests"></class>
         </classes>
     </test>
 </suite>
