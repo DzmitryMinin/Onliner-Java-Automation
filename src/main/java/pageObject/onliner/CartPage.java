@@ -1,6 +1,7 @@
 package pageObject.onliner;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageObject.baseObjects.BasePage;
 
@@ -14,17 +15,17 @@ public class CartPage extends BasePage {
     private final By removeItem = By.xpath("//a[contains(@class, 'cart-form__button_remove')]");
     private final By productsPriceList = By.xpath("//div[@class='cart-form__offers-part cart-form__offers-part_price helpers_show_tablet']/div[contains(@class, 'cart-form__description_base-alter')]");
     private final By cartSum = By.xpath("//div[@class='cart-form__description cart-form__description_other cart-form__description_base-alter cart-form__description_condensed-other']");
-    double sum = 0.0;
+    private final By productImage = By.xpath("//div[contains(@class, 'cart-form__offers-item_secondary')]//a[@class='cart-form__preview']");
 
     public CartPage removeItemsFromCart() {
         List<WebElement> productsToRemove = getListOfWebElements(removeItem);
         for (int i = 0; i < productsToRemove.size(); i++) {
             WebElement productToRemove = productsToRemove.get(i);
-            actions.moveToElement(productToRemove).click(productToRemove).click(productToRemove).perform();
+            actions.moveToElement(driver.findElement(productImage)).click(productToRemove).perform();
             refreshPage();
             productsToRemove = getListOfWebElements(removeItem);
         }
-        return this;
+      return this;
     }
 
     public CartPage verifyCartTitle() {
@@ -38,6 +39,7 @@ public class CartPage extends BasePage {
                 .stream()
                 .map(element -> element.getAttribute("textContent"))
                 .collect(Collectors.toList());
+        Double sum = 0d;
         for (String str : cartPrices) {
             String numericValue = extractNumericValue(str);
             if (numericValue != null) {

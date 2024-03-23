@@ -17,13 +17,13 @@ public class CartTests extends BaseTest {
     @Test(priority = 1, description = "Add products to cart and verify if all products price equals total sum")
     public void compareProductsSumWithTotalCartSum() {
         get(CatalogPage.class)
-                .searchForProduct("Iphone")
+                .searchForProduct("Apple")
                 .switchToFrame()
-                .selectProductFromSearchList(1)
+                .selectProductFromSearchList(3)
                 .addProductToCart()
-                .searchForProduct("Asus")
+                .searchForProduct("Samsung")
                 .switchToFrame()
-                .selectProductFromSearchList(4)
+                .selectProductFromSearchList(2)
                 .addProductToCart()
                 .openCart();
         Assert.assertEquals(get(CartPage.class).getProductsSum(), get(CartPage.class).getCartSum(), "Products sum differs from cart sum");
