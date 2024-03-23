@@ -1,3 +1,4 @@
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -7,7 +8,7 @@ import pageObject.onliner.CatalogPages.CatalogPage;
 
 public class CatalogTests extends BaseTest {
     @Parameters({"url"})
-    @BeforeTest
+    @BeforeMethod
     public void precondition(String url) {
         get(CatalogPage.class).navigateTo(url);
     }

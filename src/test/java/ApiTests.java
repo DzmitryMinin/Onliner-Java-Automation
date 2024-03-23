@@ -5,6 +5,7 @@ import driver.entities.pojo.Product;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageObject.baseObjects.BaseTest;
@@ -15,11 +16,11 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.notNullValue;
 import static propertyUtils.PropertyReader.getProperties;
 
-public class ApiTests extends BaseTest {
+public class ApiTests extends BaseTest{
     Product product = new Product();
     Cart cart = new Cart();
 
-    @BeforeTest
+    @BeforeMethod
     public void precondition() {
         baseURI = getProperties().getProperty("urlApi");
     }

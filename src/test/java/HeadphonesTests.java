@@ -6,7 +6,7 @@ import pageObject.onliner.CatalogPages.HeadphonesPage;
 public class HeadphonesTests extends BaseTest {
 
     @Parameters({"url"})
-    @BeforeTest
+    @BeforeMethod
     public void precondition(String url) {
         get(HeadphonesPage.class)
                 .navigateTo(url)

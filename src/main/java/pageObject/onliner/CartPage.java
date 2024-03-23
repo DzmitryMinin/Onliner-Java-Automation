@@ -32,7 +32,7 @@ public class CartPage extends BasePage {
         return this;
     }
 
-    public double getProductsSum() {
+    public Double getProductsSum() {
         List<WebElement> productPriceList = getListOfWebElements(this.productsPriceList);
         List<String> cartPrices = productPriceList
                 .stream()

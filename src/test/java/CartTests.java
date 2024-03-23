@@ -1,4 +1,5 @@
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -8,13 +9,13 @@ import pageObject.onliner.CatalogPages.CatalogPage;
 
 public class CartTests extends BaseTest {
     @Parameters({"url"})
-    @BeforeTest
+    @BeforeMethod
     public void precondition(String url) {
         get(CatalogPage.class).navigateTo(url);
     }
 
     @Test(priority = 1, description = "Add products to cart and verify if all products price equals total sum")
-    public void addProductsToCart() {
+    public void compareProductsSumWithTotalCartSum() {
         get(CatalogPage.class)
                 .searchForProduct("Iphone")
                 .switchToFrame()
@@ -28,8 +29,8 @@ public class CartTests extends BaseTest {
         Assert.assertEquals(get(CartPage.class).getProductsSum(), get(CartPage.class).getCartSum(), "Products sum differs from cart sum");
     }
 
-    @Test(priority = 2, description = "Remove product from cart")
-    public void removeItemFormCartTest() {
+    @Test(priority = 2, description = "Remove added products from cart")
+    public void removeProductsFromCart() {
         get(CatalogPage.class)
                 .searchForProduct("Iphone")
                 .switchToFrame()

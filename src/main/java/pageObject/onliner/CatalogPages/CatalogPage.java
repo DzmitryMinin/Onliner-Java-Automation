@@ -37,6 +37,7 @@ public class CatalogPage extends BasePage {
     }
 
     public CatalogPage openCart() {
+        sleep(2000);
         clickElement(openCart);
         return this;
     }

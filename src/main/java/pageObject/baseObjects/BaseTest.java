@@ -5,9 +5,7 @@ import static driver.WebDriverSetUp.createDriver;
 import static driver.WebDriverSetUp.quitDriver;
 import static propertyUtils.PropertyReader.getProperties;
 
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import testngUtils.InvokedListener;
 import testngUtils.Listener;
 
@@ -15,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 
 @Listeners({Listener.class, InvokedListener.class})
 public class BaseTest {
-    @BeforeTest
+    @BeforeMethod
     protected void setUp() {
         createDriver(System.getProperties().contains("config")
                 ? valueOf(getProperties().getProperty("browser").toUpperCase())
@@ -34,8 +32,8 @@ public class BaseTest {
         return instance;
     }
 
-    /*@AfterTest(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     protected void tearDown() {
         quitDriver();
-    }*/
+    }
 }

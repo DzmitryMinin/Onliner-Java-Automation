@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="onliner auto tests">
-    <parameter name="url" value="https://profile.onliner.by/login"></parameter>
-    <parameter name="username" value="gannon.tanveer@marsoak.com"></parameter>
-    <parameter name="password" value="Test123!"></parameter>
     <test name="Login Tests" enabled="false">
+        <parameter name="url" value="https://profile.onliner.by/login"></parameter>
+        <parameter name="username" value="gannon.tanveer@marsoak.com"></parameter>
+        <parameter name="password" value="Test123!"></parameter>
         <classes>
             <class name="LoginTests"/>
         </classes>
     </test>
-    <parameter name="url" value="https://catalog.onliner.by/"></parameter>
-    <test name="Catalog tests" enabled="false">
+    <test name="Catalog tests">
+        <parameter name="url" value="https://catalog.onliner.by/"></parameter>
         <classes>
             <class name="CatalogTests"></class>
         </classes>
     </test>
-    <parameter name="urlOnliner" value="https://profile.onliner.by/registration"></parameter>
-    <parameter name="urlTempEmail" value="https://inboxes.com/"></parameter>
-    <parameter name="password" value="Test123!"></parameter>
-    <parameter name="confirmPassword" value="Test123!"></parameter>
     <test name="Registration tests" enabled="false">
+        <parameter name="urlOnliner" value="https://profile.onliner.by/registration"></parameter>
+        <parameter name="urlTempEmail" value="https://inboxes.com/"></parameter>
+        <parameter name="password" value="Test123!"></parameter>
+        <parameter name="confirmPassword" value="Test123!"></parameter>
         <classes>
             <class name="RegistrationTests"></class>
         </classes>
     </test>
-    <parameter name="url" value="https://profile.onliner.by/login"></parameter>
-    <parameter name="username" value="gannon.tanveer@marsoak.com"></parameter>
-    <parameter name="password" value="Test123!"></parameter>
     <test name="Profile tests" enabled="false">
+        <parameter name="url" value="https://profile.onliner.by/login"></parameter>
+        <parameter name="username" value="gannon.tanveer@marsoak.com"></parameter>
+        <parameter name="password" value="Test123!"></parameter>
         <classes>
             <class name="ProfilePageTests"></class>
         </classes>
     </test>
-    <parameter name="url" value="https://catalog.onliner.by/headphones"></parameter>
-    <test name="Headphones tests" enabled="false">
+    <test name="Headphones tests">
+        <parameter name="url" value="https://catalog.onliner.by/headphones"></parameter>
         <classes>
             <class name="HeadphonesTests"></class>
         </classes>
     </test>
-    <test name="Cart tests" enabled="false">
+    <test name="Cart tests">
+        <parameter name="url" value="https://catalog.onliner.by/"></parameter>
         <classes>
             <class name="CartTests"></class>
         </classes>
