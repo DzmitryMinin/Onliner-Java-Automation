@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="login">
+<suite name="onliner auto tests">
+    <parameter name="url" value="https://profile.onliner.by/login"></parameter>
+    <parameter name="username" value="gannon.tanveer@marsoak.com"></parameter>
+    <parameter name="password" value="Test123!"></parameter>
     <test name="Login Tests" enabled="false">
         <classes>
             <class name="LoginTests"/>
         </classes>
     </test>
-    <test name="catalog tests" enabled="false">
+    <parameter name="url" value="https://catalog.onliner.by/"></parameter>
+    <test name="Catalog tests" enabled="false">
         <classes>
             <class name="CatalogTests"></class>
         </classes>
     </test>
-    <test name="registration tests" enabled="false">
+    <parameter name="urlOnliner" value="https://profile.onliner.by/registration"></parameter>
+    <parameter name="urlTempEmail" value="https://inboxes.com/"></parameter>
+    <parameter name="password" value="Test123!"></parameter>
+    <parameter name="confirmPassword" value="Test123!"></parameter>
+    <test name="Registration tests" enabled="false">
         <classes>
             <class name="RegistrationTests"></class>
         </classes>
     </test>
-    <test name="profile tests" enabled="false">
+    <parameter name="url" value="https://profile.onliner.by/login"></parameter>
+    <parameter name="username" value="gannon.tanveer@marsoak.com"></parameter>
+    <parameter name="password" value="Test123!"></parameter>
+    <test name="Profile tests" enabled="false">
         <classes>
             <class name="ProfilePageTests"></class>
         </classes>
     </test>
-    <test name="headphones tests" enabled="false">
+    <parameter name="url" value="https://catalog.onliner.by/headphones"></parameter>
+    <test name="Headphones tests" enabled="false">
         <classes>
             <class name="HeadphonesTests"></class>
         </classes>
     </test>
-    <test name="cart tests">
+    <test name="Cart tests" enabled="false">
         <classes>
             <class name="CartTests"></class>
+        </classes>
+    </test>
+    <test name="API tests">
+        <classes>
+            <class name="ApiTests"></class>
         </classes>
     </test>
 </suite>

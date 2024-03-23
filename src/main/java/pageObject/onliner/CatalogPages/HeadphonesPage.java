@@ -2,12 +2,9 @@ package pageObject.onliner.CatalogPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObject.baseObjects.BasePage;
 
 import java.util.List;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class HeadphonesPage extends BasePage {
     private final By restFilters = By.xpath("(//div[contains(@class, 'catalog-form__button_show-secondary')]//span)[1]");
@@ -19,8 +16,8 @@ public class HeadphonesPage extends BasePage {
     private final By favouriteBtn = By.xpath("((//div[@class='catalog-form__offers-flex'])[1]/div//label)[3]");
     private final By popupWindow = By.xpath("(//div[contains(text(), 'Добавить в избранное')])[1]");
 
-    public HeadphonesPage navigateTo() {
-        open("https://catalog.onliner.by/headphones");
+    public HeadphonesPage navigateTo(String url) {
+        open(url);
         return this;
     }
 

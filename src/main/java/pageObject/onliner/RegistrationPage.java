@@ -1,6 +1,7 @@
 package pageObject.onliner;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pageObject.baseObjects.BasePage;
 
 public class RegistrationPage extends BasePage {
@@ -37,6 +38,11 @@ public class RegistrationPage extends BasePage {
 
     public RegistrationPage submitRegistration() {
         clickElement(submit);
+        return this;
+    }
+
+    public RegistrationPage verifySuccessRegistration() {
+        Assert.assertEquals(getCurrentUrl(), "https://profile.onliner.by/", "Registration failed");
         return this;
     }
 }

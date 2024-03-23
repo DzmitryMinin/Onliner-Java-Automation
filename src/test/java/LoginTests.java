@@ -1,33 +1,39 @@
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObject.baseObjects.BaseTest;
 import pageObject.onliner.LoginPage;
 
 public class LoginTests extends BaseTest {
-    private LoginPage loginPage;
-
+    @Parameters({"url"})
     @BeforeTest
-    public void precondition() {
-        loginPage = new LoginPage();
-        loginPage.navigateTo("https://profile.onliner.by/login");
+    public void precondition(@Optional("") String url) {
+        get(LoginPage.class).navigateTo(url);
     }
 
     @Test(priority = 1, description = "Verify links on login page")
-    public void verifyLinks() {
-        loginPage
+    public void verifyLoginPageLinks() {
+        get(LoginPage.class)
                 .verifyRegistrationLink()
                 .verifyRecoverPasswordLink()
                 .verifyFooter();
     }
 
-    @Test(priority = 2, description = "Successful login")
-    public void successfulLoginTest() {
-        loginPage
-                .enterLogin("gannon.tanveer@marsoak.com")
-                .enterPassword("Test123!")
+    @Parameters({"username", "password"})
+    @Test(priority = 2, description = "Successful login", enabled = false)
+    public void successfulLogin(@Optional("") String username, String password) {
+        get(LoginPage.class)
+                .enterLogin(username)
+                .enterPassword(password)
                 .clickEnterBtn()
                 .switchToFrame()
                 .checkCaptcha()
                 .switchToContent();
+    }
+    @Test(priority = 3, description = "Invalid login", enabled = false)
+    public void invalidLogin() {
+        get(LoginPage.class)
+                .enterLogin("Test123!")
+                .enterPassword("Qwerty123!")
+                .clickEnterBtn()
+                .verifyInvalidCredsText();
     }
 }

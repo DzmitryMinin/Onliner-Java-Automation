@@ -12,8 +12,6 @@ import pageObject.baseObjects.BaseTest;
 import java.util.ArrayList;
 
 import static io.restassured.RestAssured.*;
-import static java.util.function.Predicate.not;
-import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.notNullValue;
 import static propertyUtils.PropertyReader.getProperties;
 
@@ -23,10 +21,10 @@ public class ApiTests extends BaseTest {
 
     @BeforeTest
     public void precondition() {
-        baseURI = getProperties().getProperty("url");
+        baseURI = getProperties().getProperty("urlApi");
     }
 
-    @Test(priority = 1, description = "check status code")
+    @Test(priority = 1, description = "Check getting currency rates")
     public void getCurrency() {
         Response response = given()
                 .filter(new AllureRestAssured())
@@ -42,7 +40,7 @@ public class ApiTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(priority = 2, description = "add a product to cart")
+    @Test(priority = 2, description = "Add a product to cart")
     public void addProductToCart() {
         product.setPosition_id("1689:1137995");
         product.setProduct_id(4230055);
@@ -61,7 +59,7 @@ public class ApiTests extends BaseTest {
         cart = response.jsonPath().getObject("", Cart.class);
     }
 
-    @Test(priority = 3, description = "delete a product from cart")
+    @Test(priority = 3, description = "Delete a product from cart")
     public void deleteProductFromCart() {
         Position position = new Position();
         position.setPosition_id(product.getPosition_id());

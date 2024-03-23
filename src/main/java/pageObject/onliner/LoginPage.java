@@ -1,7 +1,6 @@
 package pageObject.onliner;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.bidi.log.Log;
 import org.testng.Assert;
 import pageObject.baseObjects.BasePage;
 
@@ -17,6 +16,7 @@ public class LoginPage extends BasePage {
     private final By recoverPasswordLink = By.cssSelector("a[href='/recover-password']");
     private final By captchaCheckbox = By.xpath("//div[@class='recaptcha-checkbox-border']");
     private final By captchaFrame = By.cssSelector("iframe[title='reCAPTCHA']");
+    private final By invalidCredsText = By.xpath("//div[contains(@class, 'auth-form__description_extended-other')]");
 
     public LoginPage navigateTo(String url) {
         open(url);
@@ -55,20 +55,25 @@ public class LoginPage extends BasePage {
 
     public LoginPage verifyRegistrationLink() {
         clickElement(registrationLink);
-        Assert.assertTrue(driver.getCurrentUrl().equals("https://profile.onliner.by/registration"));
+        Assert.assertTrue(getCurrentUrl().equals("https://profile.onliner.by/registration"));
         getBack();
         return this;
     }
 
     public LoginPage verifyRecoverPasswordLink() {
         clickElement(recoverPasswordLink);
-        Assert.assertTrue(driver.getCurrentUrl().equals("https://profile.onliner.by/recover-password"));
+        Assert.assertTrue(getCurrentUrl().equals("https://profile.onliner.by/recover-password"));
         getBack();
         return this;
     }
 
     public LoginPage verifyFooter() {
-        Assert.assertEquals(driver.findElement(footer).getText(), "© 2001–2024 Onlíner", "Incorrect footer text");
+        Assert.assertEquals(getWebElement(footer).getText(), "© 2001–2024 Onlíner", "Incorrect footer text");
+        return this;
+    }
+
+    public LoginPage verifyInvalidCredsText() {
+        Assert.assertEquals(getWebElement(invalidCredsText).getText(), "Неверный логин или пароль", "Incorrect error message");
         return this;
     }
 }

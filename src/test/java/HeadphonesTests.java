@@ -4,31 +4,31 @@ import pageObject.baseObjects.BaseTest;
 import pageObject.onliner.CatalogPages.HeadphonesPage;
 
 public class HeadphonesTests extends BaseTest {
-    private HeadphonesPage headphonesPage;
 
+    @Parameters({"url"})
     @BeforeTest
-    public void precondition() {
-        headphonesPage = new HeadphonesPage();
-        headphonesPage
-                .navigateTo()
+    public void precondition(String url) {
+        get(HeadphonesPage.class)
+                .navigateTo(url)
                 .expandRestFilters()
                 .selectWiredHeadphones();
     }
 
     @Test(priority = 1, description = "Verify popup window")
     public void checkPopupWindow() {
-        headphonesPage.verifyPopupWindow();
+        get(HeadphonesPage.class).verifyPopupWindow();
     }
 
     @Test(priority = 2, dataProvider = "cable length", description = "Boundary values analysis for cable length")
     public void cableLengthTest(String lengthFrom, String lengthUpTo, Boolean status) {
-        headphonesPage
+        get(HeadphonesPage.class)
                 .enterLengthFrom(lengthFrom)
                 .enterLengthUpTo(lengthUpTo)
                 .checkIfPageLoaded();
         if (status) {
-            Assert.assertTrue(headphonesPage.getProductList().size() > 0);
-        } else Assert.assertTrue(headphonesPage.getProductList().size() == 0);
+            Assert.assertTrue(get(HeadphonesPage.class).getProductList().size() > 0);
+        } else
+            Assert.assertTrue(get(HeadphonesPage.class).getProductList().size() == 0);
     }
 
     @DataProvider(name = "cable length")

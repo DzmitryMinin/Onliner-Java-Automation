@@ -1,11 +1,9 @@
 package pageObject.onliner;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageObject.baseObjects.BasePage;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,10 +12,8 @@ import java.util.stream.Collectors;
 public class CartPage extends BasePage {
     private final By cartTitle = By.xpath("//div[contains(@class, 'cart-form__title')]");
     private final By removeItem = By.xpath("//a[contains(@class, 'cart-form__button_remove')]");
-    private final By productLink = By.xpath("//div[@class='cart-form__offers-flex']/div/div/a[contains(@class, 'cart-form__link_base-alter')]");
     private final By productsPriceList = By.xpath("//div[@class='cart-form__offers-part cart-form__offers-part_price helpers_show_tablet']/div[contains(@class, 'cart-form__description_base-alter')]");
     private final By cartSum = By.xpath("//div[@class='cart-form__description cart-form__description_other cart-form__description_base-alter cart-form__description_condensed-other']");
-    private final By loader = By.xpath("//div[contains(@class, 'cart-form_animated')]");
     double sum = 0.0;
 
     public CartPage removeItemsFromCart() {

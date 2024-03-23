@@ -18,6 +18,7 @@ public class ProfilePage extends BasePage {
 
     public ProfilePage clickChangePhoneNumber() {
         moveOverElementAndClick(getWebElement(changePhoneBtn));
+        enterValue(changePhoneBtn, "+375291001010");
         return this;
     }
 }

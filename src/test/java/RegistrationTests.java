@@ -1,36 +1,27 @@
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObject.baseObjects.BaseTest;
 import pageObject.onliner.RegistrationPage;
 import pageObject.tempEmail.TempEmailPage;
 
 public class RegistrationTests extends BaseTest {
-    private RegistrationPage registrationPage;
-    private TempEmailPage tempEmailPage;
-
-
-    @Test(priority = 1, description = "Generate test email to register new user")
-    public void generateTestEmail() {
+    @Parameters({"urlTempEmail", "urlOnliner", "password", "confirmPassword"})
+    @Test(priority = 1, description = "New user registration")
+    public void registerNewUser(String urlTempEmail, String urlOnliner, String password, String confirmPassword) {
+        TempEmailPage tempEmailPage;
         tempEmailPage = new TempEmailPage();
         tempEmailPage
-                .navigateTo("https://inboxes.com/")
-                .copyEmail();
-    }
-
-    @Test(priority = 2, enabled = false, description = "New user registration")
-    public void registerNewUser() {
-        registrationPage = new RegistrationPage();
-        tempEmailPage = new TempEmailPage();
-        tempEmailPage
-                .navigateTo("https://inboxes.com/")
+                .navigateTo(urlTempEmail)
                 .copyEmail()
                 .openNewTab();
-        registrationPage
-                .navigateTo("https://profile.onliner.by/registration")
+        get(RegistrationPage.class)
+                .navigateTo(urlOnliner)
                 .enterEmail(tempEmailPage.getEmailAddress())
-                .enterPassword("Test123!")
-                .confirmPassword("Test123!")
+                .enterPassword(password)
+                .confirmPassword(confirmPassword)
                 .checkConsent()
                 .submitRegistration();
         tempEmailPage.confirmNewAccount();
+        get(RegistrationPage.class).verifySuccessRegistration();
     }
 }

@@ -90,6 +90,10 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
+    protected String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
     protected void switchToFrame(By by) {
         log.info("Switch to frame :: " + driver.findElement(by));
         waitUntilVisibilityOf(by);
@@ -98,11 +102,6 @@ public abstract class BasePage {
 
     protected void switchToDefaultContent() {
         driver.switchTo().defaultContent();
-    }
-
-    protected void clickElement(WebElement webElement) {
-        log.info("Click on :: " + webElement);
-        webElement.click();
     }
 
     protected WebElement getWebElement(By by) {
