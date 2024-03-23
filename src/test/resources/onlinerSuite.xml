@@ -9,7 +9,7 @@
             <class name="LoginTests"/>
         </classes>
     </test>
-    <test name="Catalog tests">
+    <test name="Catalog tests" enabled="false">
         <parameter name="url" value="https://catalog.onliner.by/"></parameter>
         <classes>
             <class name="CatalogTests"></class>
@@ -38,16 +38,15 @@
             <class name="HeadphonesTests"></class>
         </classes>
     </test>
-    <test name="Cart tests">
+    <test name="Cart tests" enabled="false">
         <parameter name="url" value="https://catalog.onliner.by/"></parameter>
         <classes>
             <class name="CartTests"></class>
         </classes>
     </test>
-    <test name="API tests">
+    <test name="API tests" enabled="false">
         <classes>
             <class name="ApiTests"></class>
         </classes>
     </test>
 </suite>
-

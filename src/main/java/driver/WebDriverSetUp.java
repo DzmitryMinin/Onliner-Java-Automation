@@ -7,6 +7,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import propertyUtils.PropertyReader;
 
 import java.time.Duration;
 
@@ -18,7 +19,7 @@ public class WebDriverSetUp {
             switch (type) {
                 case CHROME:
                     ChromeOptions options = new ChromeOptions();
-                    //options.addArguments(PropertyReader.getProperties().getProperty("browser.option").split(";"));
+                    options.addArguments(PropertyReader.getProperties().getProperty("browser.option").split(";"));
                     webDriver = new ChromeDriver(options);
                     break;
                 case FIREFOX:

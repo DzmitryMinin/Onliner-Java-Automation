@@ -145,6 +145,8 @@ public abstract class BasePage {
         actions.scrollToElement(driver.findElement(by)).scrollByAmount(0, 50).perform();
     }
 
+
+
     protected void refreshPage() {
         driver.navigate().refresh();
     }
