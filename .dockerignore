@@ -1,7 +1,4 @@
-*.class
-*.log
 /.idea
 /allure-report
 /allure-results
 /target
-/docker_results
