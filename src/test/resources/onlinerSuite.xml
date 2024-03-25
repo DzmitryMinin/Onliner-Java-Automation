@@ -9,6 +9,12 @@
             <class name="LoginTests"/>
         </classes>
     </test>
+    <test name="Headphones tests">
+        <parameter name="url" value="https://catalog.onliner.by/headphones"></parameter>
+        <classes>
+            <class name="HeadphonesTests"></class>
+        </classes>
+    </test>
     <test name="Catalog tests">
         <parameter name="url" value="https://catalog.onliner.by/"></parameter>
         <classes>
@@ -30,12 +36,6 @@
         <parameter name="password" value="Test123!"></parameter>
         <classes>
             <class name="ProfilePageTests"></class>
-        </classes>
-    </test>
-    <test name="Headphones tests">
-        <parameter name="url" value="https://catalog.onliner.by/headphones"></parameter>
-        <classes>
-            <class name="HeadphonesTests"></class>
         </classes>
     </test>
     <test name="Cart tests">

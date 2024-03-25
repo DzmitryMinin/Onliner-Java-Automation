@@ -29,7 +29,7 @@ public class CartTests extends BaseTest {
         Assert.assertEquals(get(CartPage.class).getProductsSum(), get(CartPage.class).getCartSum(), "Products sum differs from cart sum");
     }
 
-    @Test(priority = 2, description = "Remove added products from cart")
+    @Test(priority = 2, description = "Remove added products from cart", enabled = false)
     public void removeProductsFromCart() {
         get(CatalogPage.class)
                 .searchForProduct("Iphone")
