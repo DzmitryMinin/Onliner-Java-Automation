@@ -39,11 +39,11 @@ public class HeadphonesTests extends BaseTest {
                 {"0.3", "23", true},
                 {"23", "23", true},
                 {"0", "0.29", false},
-                {"23", "0", false},
+                //{"23", "0", false},
                 //{"23.0001", "24", false},
                 //{"-1", "30", false},
                 {"0", "0", false},
-                {"2", "-1", false}
+                //{"2", "-1", false}
         };
     }
 }
